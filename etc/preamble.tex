@@ -1,0 +1,207 @@
+%!TEX root = ../main.tex
+\typeout{- START ----------------------------------- Preamble.tex --}
+\documentclass[a4paper,12pt,twoside,onecolumn,openright,final,fleqn,english]{memoir}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{fixltx2e}
+\usepackage{ifthen}
+\usepackage{layout}
+\usepackage{afterpage}
+
+%% Fonts, formatting
+\usepackage[TS1]{fontenc}
+\usepackage{latexsym}
+\usepackage{calc,fourier}
+\usepackage[scaled=.92]{helvet}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{eurosym}
+\usepackage{textcomp}
+\usepackage{soul} % Underline text
+\usepackage{soulutf8}
+\usepackage{setspace}	% Line spacing
+\usepackage{url}
+
+%% Drawings, color
+%\usepackage{epic}
+%\usepackage{eepic}
+\usepackage[usenames, dvipsnames]{xcolor}
+\usepackage[absolute]{textpos}
+
+%% Graphics
+\usepackage[pdftex]{graphicx} % Pakke til jpeg/png billeder
+\graphicspath{img}
+%\usepackage{epstopdf}
+\usepackage{pdfpages}
+
+% References
+\usepackage[bookmarksopen=true,bookmarksopenlevel=2]{hyperref}
+\usepackage{memhfixc}	% Fixes hyperref with memoir
+\usepackage[all]{hypcap}
+
+%% Citations
+\usepackage{apacite}
+\usepackage[square,semicolon,authoryear,sort&compress]{natbib}
+
+%% Language specific
+\input{etc/english.tex}
+%\input{etc/danish.tex}
+
+%% Tables
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{multicol}
+
+%% Lists
+\usepackage{mdwlist}
+\usepackage{paralist}
+
+%% Pseudo code
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage[chapter]{algorithm}
+
+%% Watermark
+%\usepackage{draftwatermark}
+%\SetWatermarkText{\sffamily CONFIDENTIAL}
+%\SetWatermarkLightness{0.9}
+%\SetWatermarkScale{2.5}
+
+%% Source code listings
+\input{etc/listings.tex}
+
+%% TODO notes
+\usepackage[colorinlistoftodos,shadow,prependcaption]{todonotes}
+\newcommand{\insertref}[2][]{\todo[color=blue!40,#1]{#2}} 
+\newcommand{\explain}[2][]{\todo[color=red!40,#1]{#2}}
+\newcommand{\writemore}[2][]{\todo[inline,color=green!40,#1]{#2}} 
+\newcommand{\postit}[2][]{\todo[color=yellow!40,#1]{#2}}
+\newcommand{\cmt}[2][]{%
+	% initials of the author (optional) + note in the margin
+	{%
+		\todo[color=orange!40,size=\small]{%
+			\textbf{[\uppercase{#1}]:}~#2}%
+}}
+
+
+
+%% Layout
+\parskip        =    1ex
+\parindent      =    0em
+\baselineskip   =    2ex
+
+
+
+%% Margins
+\setlrmarginsandblock{5cm}{4cm}{*}
+\setulmarginsandblock{3cm}{*}{1}
+
+%% Front page layout
+\aliaspagestyle{title}{empty} 
+\setlength{\droptitle}{4cm}
+\pretitle{\begin{center}\Huge}
+\posttitle{\par\end{center}\vskip 1.5em}
+\preauthor{\begin{center} \large \lineskip 0.5em \begin{tabular}[t]{l}}
+\postauthor{\end{tabular}\par\end{center}}
+\predate{\begin{center}\normalsize}
+\postdate{\par\end{center}}
+
+%% Table of contents
+\maxtocdepth{subsection}
+\maxsecnumdepth{subsubsection}
+\addtocontents{toc}{\setlength{\cftpartnumwidth}{2em}}
+\addtocontents{toc}{\setlength{\cftchapternumwidth}{2em}}
+\addtocontents{toc}{\setlength{\cftsectionindent}{2em}}
+
+%% Parts
+\aliaspagestyle{part}{empty}
+\renewcommand{\partnamefont}{\huge\bfseries\normalfont}
+\renewcommand{\partnumfont}{\normalfont \HUGE}
+
+%% Chapters and headings
+%\definecolor{chapterNumber}{rgb}{.647,.129,.149}	% nicered
+%\definecolor{chapterNumber}{rgb}{.8,.8,.8}	& grå
+%\definecolor{chapterNumber}{RGB}{4,140,124}	% DAD grøn
+%\definecolor{chapterNumber}{RGB}{224,89,153}	% Anæstesi pink
+%\definecolor{chapterNumber}{RGB}{0,146,207}	% AAU blå
+%\definecolor{chapterNumber}{RGB}{195,176,145}	% Khaki
+%\definecolor{chapterNumber}{RGB}{79,105,136}	% Moonlight Blue
+\definecolor{chapterNumber}{RGB}{0,0,0}	% Black
+
+\input{etc/sty.jens.tex}
+\hangsecnum
+%\renewcommand{\beforechapskip}{-1em}
+%\renewcommand{\afterchapskip}{1em}
+\setsecheadstyle{\sffamily\large\bfseries\raggedright}
+\setsubsecheadstyle{\sffamily\normalsize\bfseries\raggedright}
+\setsubsubsecheadstyle{\sffamily\small\bfseries\raggedright}
+\setparaheadstyle{\sffamily\small\itshape\raggedright}
+\setbeforesecskip{1.5em}
+\setaftersecskip{0.5em}
+\setbeforesubsecskip{1em}
+\setaftersubsecskip{0.3em}
+\setbeforesubsubsecskip{0.5em}
+\setaftersubsubsecskip{0.01em}
+\setafterparaskip{0.00001pt}
+
+\checkandfixthelayout
+
+
+
+%% Float captions
+\newsubfloat{figure}
+\newsubfloat{table}
+\changecaptionwidth
+\captionwidth{0.8\linewidth}
+\captionnamefont{\footnotesize\bfseries}
+\captiontitlefont{\footnotesize\itshape}
+\hangcaption
+\subcaptionlabelfont{\footnotesize\bfseries}
+\subcaptionfont{\footnotesize\itshape}
+\hangsubcaption
+%\loosesubcaptions
+
+%% Figures
+\newcommand{\figur}[4][1]{%
+\begin{figure}[hbtp]%
+	\centering%
+	\includegraphics[width={#1}\linewidth]{#2}%
+	\caption{#3}%
+	\label{#4}%
+\end{figure}%
+}
+\newcommand{\pagedFigure}[4][1]{%
+\begin{figure}[hbtp]%
+	\centering%
+	\begin{minipage}{0.49\linewidth}%
+		\centering%
+		\includegraphics[width={#1}\linewidth]{#2}%
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}{0.49\linewidth}%
+		\centering%
+		\normalcaption%
+		\normalcaptionwidth%
+		\caption{#3}%
+		\label{#4}%
+	\end{minipage}%
+\end{figure}%
+}
+
+
+%% Phasors
+\makeatletter
+\def\phase#1{{\vbox{\ialign{$\m@th\scriptstyle##$\crcr
+\not\mathrel{\mkern10mu\smash{#1}}\crcr
+\noalign{\nointerlineskip}
+\mkern2.5mu\leaders\hrule height.34pt\hfill\mkern2.5mu\crcr}}}}
+\makeatother
+
+
+
+%% Hyphenation
+\tolerance 1000		% Siger hvor meget afstand, der må være mellem ordene.
+
+
+\makeindex
+
+\typeout{- END ----------------------------------- Preamble.tex --}

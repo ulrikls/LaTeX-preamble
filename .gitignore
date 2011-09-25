@@ -1,0 +1,13 @@
+/*.aux
+/*.idx
+/*.log
+/*.out
+/*.pdf
+/*.synctex.gz
+/*.synctex(busy).gz
+/*.toc
+/*.bbl
+/*.blg
+/*.tdo
+.DS_Store
+

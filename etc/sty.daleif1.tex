@@ -1,0 +1,68 @@
+%!TEX root = ../main.tex
+
+%% daleif1 chapter style %%
+
+\makeatletter
+
+\newlength\dlf@normtxtw
+\setlength\dlf@normtxtw{\textwidth}
+\newlength{\partnumwidth}
+
+\newsavebox{\leifline@chapter}
+\newcommand\leifline@chapter@marker[1][4cm]{%
+	\sbox\leifline@chapter{%
+		\resizebox{!}{#1}{\fboxsep=1pt%
+			\colorbox{chapterNumber}{\color{white}\bfseries\sffamily\thechapter}%
+		}}%
+	\rotatebox{90}{%
+		\resizebox{%
+			\heightof{\usebox{\leifline@chapter}}+\depthof{\usebox{\leifline@chapter}}}%
+		{!}{\chapnamefont\@chapapp}}\quad%
+	\raisebox{\depthof{\usebox{\leifline@chapter}}}{\usebox{\leifline@chapter}}%
+}
+\newcommand\leifline@chm[1][4cm]{%
+	\sbox\leifline@chapter{\leifline@chapter@marker[#1]}%
+	\makebox[0pt][l]{% aka \rlap
+		\makebox[0cm][r]{\usebox\leifline@chapter}%
+	}}
+\newsavebox{\leifline@part}
+\newsavebox{\leifparttitle}
+\newcommand\leifline@part@marker[1][4cm]{%
+	\sbox\leifline@part{%
+		\resizebox{!}{#1}{\fboxsep=1pt%
+			\colorbox{chapterNumber}{\color{white}\bfseries\thepart}%
+		}}%
+	\sbox{\leifparttitle}{%
+		\resizebox{%
+			\widthof{\usebox{\leifline@part}}}%
+		{!}{\partnamefont\partname}}\vspace{#1}\quad%
+	\setlength{\partnumwidth}{\widthof{\usebox{\leifparttitle}}}
+	\raisebox{\heightof{\usebox{\leifline@part}}+\depthof{\usebox{\leifline@part}}+1em}{\usebox{\leifparttitle}}\hspace{-\partnumwidth}%
+	\raisebox{\depthof{\usebox{\leifline@part}}}{\usebox{\leifline@part}}%
+}
+\newcommand\leifline@ptm[1][4cm]{%
+	\sbox\leifline@part{\leifline@part@marker[#1]}%
+	\makebox[0pt][l]{% aka \rlap
+		\makebox[0pt][c]{\usebox\leifline@part}%
+}}
+\makechapterstyle{daleif1}{
+	\setlength{\beforechapskip}{-2em} 
+	\setlength{\midchapskip}{0em} 
+	\setlength{\afterchapskip}{1em}
+	\renewcommand\chapnamefont{\scshape\so}
+	\renewcommand\chaptitlefont{\normalfont\huge\bfseries}
+	\renewcommand\chapternamenum{}
+	\renewcommand\printchaptername{}
+	\renewcommand\printchapternum{\null\hfill\leifline@chm[2.5cm]\par}
+	\renewcommand\afterchapternum{\par\vskip\midchapskip}
+	\renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
+	\renewcommand{\partnamefont}{\normalfont\Large\scshape\so}
+	\renewcommand{\parttitlefont}{\normalfont\huge\bfseries}
+	\renewcommand{\partnamenum}{}
+	\renewcommand{\printpartname}{}
+	\renewcommand\printpartnum{\null\leifline@ptm[2.5cm]\par}
+}
+\makeatother
+
+
+\chapterstyle{daleif1}

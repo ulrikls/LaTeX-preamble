@@ -1,0 +1,46 @@
+%!TEX root = ../main.tex
+
+\usepackage[danish]{babel}
+
+% BibTeX
+\usepackage[isbn,issn,url,annote]{dk-bib}
+%\renewcommand{\bibname}{Kilder}
+\bibliographystyle{dk-apali}
+
+% Krydshenvisninger
+\usepackage[danish]{varioref}	% Understøtter \vref{}
+\newcommand{\class}[1]{\texttt{\nameref{#1}}}
+\renewcommand{\fref}[1]{(\hyperref[#1]{Fig. \ref*{#1}})}
+\renewcommand{\tref}[1]{(\hyperref[#1]{Tabel \ref*{#1}})}
+\newcommand{\eref}[1]{(\ref{#1})}
+\newcommand{\aref}[1]{(\hyperref[#1]{App. \ref*{#1}})}
+\newcommand{\sref}[1]{(\hyperref[#1]{Afsnit \ref*{#1}})}
+\newcommand{\kref}[1]{(\hyperref[#1]{Kap. \ref*{#1}})}
+\newcommand{\algoref}[1]{(\hyperref[#1]{Algoritme \ref*{#1}})}
+\addto\extrasdanish{%
+  \def\figureautorefname{figur}%
+  \def\subfigureautorefname{figur}%
+  \def\tableautorefname{tabel}%
+  \def\partautorefname{del}%
+  \def\appendixautorefname{appendiks}%
+  \def\equationautorefname{ligning}%
+  \def\Itemautorefname{punkt}%
+  \def\chapterautorefname{kapitel}%
+  \def\sectionautorefname{sektion}%
+  \def\subsectionautorefname{delsektion}%
+  \def\subsubsectionautorefname{delsektion}%
+  \def\paragraphautorefname{afsnit}%
+  \def\Hfootnoteautorefname{fodnote}%
+  \def\AMSautorefname{ligning}%
+  \def\theoremautorefname{sætning}%
+  \def\pageautorefname{side}%
+}
+
+% Appendiks
+\renewleadpage[empty]{appendixpage}{Appendikser}
+\renewcommand{\appendixname}{Appendiks}
+\renewcommand{\appendixpagename}{Appendikser}
+\renewcommand{\appendixtocname}{Appendikser}
+
+% Orddeling
+\hyphenation{}

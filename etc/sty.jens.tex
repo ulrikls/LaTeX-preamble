@@ -1,0 +1,64 @@
+%!TEX root = ../main.tex
+
+%% jens chapter style %%
+
+\makeatletter
+\newsavebox{\jensline@chapter}
+\newcommand\jensline@chapter@marker[1][4cm]{%
+	\sbox\jensline@chapter{\fboxsep=0cm%
+		\colorbox{chapterNumber}{\makebox[1.48cm][c]{%
+		\resizebox{!}{0.53cm}{%
+			\color{white}\sffamily\bfseries\thechapter}% 
+		}}}%
+	\rotatebox{0}{%
+		\resizebox{%
+			3.5cm}% +\depthof{\usebox{\jensline@chapter}}
+		{!}{\chapnamefont{\@chapapp}}}\quad%    KAPITEL-SKRIFT
+	\raisebox{\depthof{\usebox{\jensline@chapter}}}{\usebox{\jensline@chapter}}%
+}
+\newcommand\jensline@chm[1][4cm]{%
+	\sbox\jensline@chapter{\jensline@chapter@marker[#1]}%
+	\makebox[1pt][l]{% aka \rlap
+		\makebox[1.9cm][r]{\usebox\jensline@chapter}%   FLYT UDOVER MARGEN
+	}}
+\newsavebox{\jensline@part}
+\newsavebox{\jensparttitle}
+\newcommand\jensline@part@marker[1][4cm]{%
+	\sbox\jensline@part{%
+		\resizebox{!}{#1}{\fboxsep=1pt%
+			\colorbox{chapterNumber}{\color{white}\sffamily\bfseries\thepart}%
+		}}%
+	\sbox{\jensparttitle}{%
+		\resizebox{%
+			\widthof{\usebox{\jensline@part}}}%
+		{!}{\partnamefont\partname}}\vspace{#1}\quad%
+	\setlength{\partnumwidth}{\widthof{\usebox{\jensparttitle}}}
+	\raisebox{\heightof{\usebox{\jensline@part}}+\depthof{\usebox{\jensline@part}}+1em}{\usebox{\jensparttitle}}\hspace{-\partnumwidth}%
+	\raisebox{\depthof{\usebox{\jensline@part}}}{\usebox{\jensline@part}}%
+}
+\newcommand\jensline@ptm[1][4cm]{%
+	\sbox\jensline@part{\jensline@part@marker[#1]}%
+	\makebox[0.4cm][l]{% aka \rlap
+		\makebox[0pt][c]{\usebox\jensline@part}%
+}}
+
+\makechapterstyle{jens}{
+	\setlength{\beforechapskip}{-1em} 
+	\setlength{\midchapskip}{2em} 
+	\setlength{\afterchapskip}{2em}
+	\renewcommand\chapnamefont{\bfseries\sffamily\MakeUppercase}
+	\renewcommand\chaptitlefont{\sffamily\LARGE\mdseries}
+	\renewcommand\chapternamenum{}
+	\renewcommand\printchaptername{}
+	\renewcommand\printchapternum{\null\hfill\jensline@chm[2.5cm]\par}
+	\renewcommand\afterchapternum{\par\vskip\midchapskip}
+	\renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
+	\renewcommand{\partnamefont}{\bfseries\sffamily\MakeUppercase}
+	\renewcommand{\parttitlefont}{\sffamily\huge\bfseries}
+	\renewcommand{\partnamenum}{}
+	\renewcommand{\printpartname}{}
+	\renewcommand\printpartnum{\null\jensline@ptm[2.5cm]\par}
+}
+\makeatother
+
+\chapterstyle{jens}

@@ -1,0 +1,33 @@
+%!TEX root = ../main.tex
+
+%% Jung chapter style %%
+
+\makechapterstyle{jung}{
+	\newif\ifNoChapNumber
+	\setlength{\beforechapskip}{-2em} 
+	\setlength{\midchapskip}{0em} 
+	\setlength{\afterchapskip}{1em} 
+	\newfont{\scaledfont}{cmr12 scaled 7000}
+	\renewcommand{\printchaptername}{}
+	\renewcommand{\chapternamenum}{} 
+	\renewcommand{\chapnumfont}{\scaledfont}
+	\renewcommand{\chaptitlefont}{\normalfont \Huge \raggedright \bfseries}
+	\renewcommand{\printchapternum}{}
+	\renewcommand{\printchapternonum}{\NoChapNumbertrue}
+	\renewcommand{\afterchapternum}{}
+	\renewcommand{\printchaptertitle}[1]{\parbox[b]{0.75\textwidth}{\chaptitlefont ##1}
+		\hfill
+		\ifNoChapNumber%
+			\par\normalsize
+			\vspace{-0.6em}
+			\rule{\linewidth}{1pt}\nobreak
+		\else%
+			\chapnumfont\thechapter\par\normalsize
+			\vspace{-0.6em}
+			\rule{0.75\linewidth}{1pt}
+		\fi
+		\NoChapNumberfalse}
+	\renewcommand{\afterchaptertitle}{\par\nobreak\vskip \afterchapskip}
+}
+
+\chapterstyle{jung}

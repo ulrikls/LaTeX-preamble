@@ -1,0 +1,23 @@
+%!TEX root = ../main.tex
+
+%% UlrikLS chapter style %%
+
+\makechapterstyle{UlrikLS}{% 
+	\setlength{\beforechapskip}{-2em} 
+	\setlength{\midchapskip}{0em} 
+	\setlength{\afterchapskip}{1em} 
+%	\newfont{\scaledfont}{cmr12 scaled 7000}
+	\renewcommand{\printchaptername}{}
+	\renewcommand{\chapternamenum}{} 
+	\renewcommand{\chapnumfont}{\normalfont \HUGE \raggedright}
+	\renewcommand{\chaptitlefont}{\normalfont \raggedright \Huge \bfseries}
+	\renewcommand{\printchapternum}{%
+		\protect\makebox[0pt][r]{% 
+			\resizebox{!}{2cm}{\hfill \chapnumfont \thechapter}\space\space\space}}%
+	\renewcommand{\printchapternonum}{}
+	\renewcommand{\afterchapternum}{}
+	\renewcommand{\printchaptertitle}[1]{\parbox[b]{\linewidth}{\chaptitlefont ##1\vspace{-0.8em} \rule{\linewidth}{1pt}}}
+	\renewcommand{\afterchaptertitle}{\par\nobreak\vskip \afterchapskip}
+}
+
+\chapterstyle{UlrikLS}

@@ -1,0 +1,97 @@
+%!TEX root = ../main.tex
+
+\usepackage{listings}	% Typesetting source code
+\lstloadlanguages{C,Matlab}
+
+
+% C kildekode
+\newcommand{\ccode}{%
+	\lstset{language=C,                % use our version of highlighting
+	  numbers=left,%
+	  numberstyle=\tiny,%
+	  stepnumber=2,%
+	  tabsize=2,%
+	  extendedchars=true,%
+	  basicstyle=\footnotesize%
+	  keywordstyle=\textbf,          % keywords
+	  commentstyle=\color[rgb]{0,0,1},  % comments
+%	  stringstyle=\color[rgb]{0.627,0.126,0.941},% strings
+	  showstringspaces=false,                     % do not emphasize spaces in strings
+	  mathescape=false,escapechar=§,              % escape to latex with §...§
+	  upquote=true,                               % upright quotes
+	  aboveskip={1.5\baselineskip},               % a bit of space above
+	  columns=fixed,                              % nice spacing
+	}%
+}
+
+% Java kildekode
+\newcommand{\javacode}{%
+	\lstset{language=Java,                % use our version of highlighting
+	  numbers=left,%
+	  numberstyle=\tiny,%
+	  stepnumber=2,%
+	  tabsize=2,%
+	  extendedchars=true,%
+	  %inputencoding=utf8/latin1,%
+	  basicstyle=\footnotesize,%
+	  breaklines=true,%
+	  keywordstyle=\color[RGB]{18,18,232},          % keywords
+	  commentstyle=\color[RGB]{157,157,157},  % comments
+	  stringstyle=\color[RGB]{209,131,16},% strings
+	  showstringspaces=false,                     % do not emphasize spaces in strings
+	  mathescape=false,escapechar=§,              % escape to latex with §...§
+	  upquote=true,                               % upright quotes
+	  aboveskip={1.5\baselineskip},               % a bit of space above
+	  columns=fixed,                              % nice spacing
+	}%
+}
+
+% XML kildekode
+\newcommand{\xmlcode}{%
+	\lstset{language=XML,                % use our version of highlighting
+	  numbers=left,%
+	  numberstyle=\tiny,%
+	  stepnumber=2,%
+	  tabsize=2,%
+	  extendedchars=true,%
+	  basicstyle=\footnotesize,%
+	  breaklines=true,%
+	  keywordstyle=\color[RGB]{18,18,232},          % keywords
+	  commentstyle=\color[RGB]{157,157,157},  % comments
+	  stringstyle=\color[RGB]{209,131,16},% strings
+	  showstringspaces=false,                     % do not emphasize spaces in strings
+	  mathescape=false,escapechar=§,              % escape to latex with §...§
+	  upquote=true,                               % upright quotes
+	  aboveskip={1.5\baselineskip},               % a bit of space above
+	  columns=fixed,                              % nice spacing
+	}%
+}
+
+% Matlab kildekode
+\newcommand{\mcode}{%
+	\lstset{language=Matlab,                % use our version of highlighting
+	  numbers=left,%
+	  numberstyle=\tiny,%
+	  stepnumber=2,%
+	  keywordstyle=\color[rgb]{0,0,1},          % keywords
+	  commentstyle=\color[rgb]{0.133,0.545,0.133},  % comments
+	  stringstyle=\color[rgb]{0.627,0.126,0.941},% strings
+	  basicstyle={\footnotesize},    % use font and smaller size
+	  showstringspaces=false,                     % do not emphasize spaces in strings
+	  tabsize=2,                                  % number of spaces of a TAB
+	  mathescape=false,escapechar=§,              % escape to latex with §...§
+	  upquote=true,                               % upright quotes
+	  aboveskip={1.5\baselineskip},               % a bit of space above
+	  columns=fixed,                              % nice spacing
+	  %
+	  % the following is for replacing some matlab relations like >= or ~=
+	  % by the corresponding LaTeX symbols, which are much easier to read ...
+	  literate=%
+	    {~}{{$\neg$}}1 %            \neg
+	    {<=}{{\tiny$\leq$}}1 %      \leq
+	    {>=}{{\tiny$\geq$}}1 %      \geq
+	    {~=}{{\tiny$\neq$}}1 %      \neq
+	    {delta}{{\tiny$\Delta$}}1%  \Delta
+	}%
+}
+\newcommand{\Matlab}{\textsc{Matlab}}
