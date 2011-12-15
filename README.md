@@ -7,11 +7,11 @@ Source files are assumed to be UTF-8 encoding.
 
 Structure
 ---------
-* The main file is main.tex
+* The main file is `main.tex`
 * Content LaTeX files goes in `src`
 * Images goes in `img`
-* BibTeX sources goes in sources.bib
-* Preamble stuff resides in `etc`. Take a look at preamble.tex to get an overview.
+* BibTeX sources goes in `sources.bib`
+* Preamble stuff resides in `etc`. Take a look at `preamble.tex` to get an overview.
 
 Features
 --------
