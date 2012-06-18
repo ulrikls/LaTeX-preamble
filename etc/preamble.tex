@@ -8,15 +8,14 @@
 \usepackage{layout}
 \usepackage{afterpage}
 
-%% Fonts, formatting
+%% Fonts, formatting, symbols
 \usepackage[TS1]{fontenc}
-\usepackage{latexsym}
 \usepackage{calc,fourier}
 \usepackage[scaled=.92]{helvet}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{bbold}
 \usepackage{eurosym}
-\usepackage{textcomp}
+\usepackage{gensymb}
 \usepackage{soul} % Underline text
 \usepackage{soulutf8}
 \usepackage{setspace}	% Line spacing
@@ -31,7 +30,6 @@
 %% Graphics
 \usepackage[pdftex]{graphicx} % Pakke til jpeg/png billeder
 \graphicspath{img}
-%\usepackage{epstopdf}
 \usepackage{pdfpages}
 
 % References
@@ -166,8 +164,7 @@
 \begin{figure}[hbtp]%
 	\centering%
 	\includegraphics[width={#1}\linewidth]{#2}%
-	\caption{#3}%
-	\label{#4}%
+	\caption{#3}\label{#4}%
 \end{figure}%
 }
 \newcommand{\pagedFigure}[4][1]{%
@@ -182,20 +179,10 @@
 		\centering%
 		\normalcaption%
 		\normalcaptionwidth%
-		\caption{#3}%
-		\label{#4}%
+		\caption{#3}\label{#4}%
 	\end{minipage}%
 \end{figure}%
 }
-
-
-%% Phasors
-\makeatletter
-\def\phase#1{{\vbox{\ialign{$\m@th\scriptstyle##$\crcr
-\not\mathrel{\mkern10mu\smash{#1}}\crcr
-\noalign{\nointerlineskip}
-\mkern2.5mu\leaders\hrule height.34pt\hfill\mkern2.5mu\crcr}}}}
-\makeatother
 
 
 
